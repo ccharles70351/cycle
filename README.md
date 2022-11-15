@@ -34,3 +34,4 @@ root                    (project root folder)
 
 ## Authors
 * Colin Charles
+* Kyle Kerr
