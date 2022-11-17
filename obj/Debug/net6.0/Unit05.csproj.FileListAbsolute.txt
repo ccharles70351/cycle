@@ -27,3 +27,16 @@ C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRA
 C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\obj\Debug\net6.0\Unit05.dll
 C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\obj\Debug\net6.0\refint\Unit05.dll
 C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\obj\Debug\net6.0\Unit05.pdb
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\Unit05.exe
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\Unit05.deps.json
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\Unit05.runtimeconfig.json
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\Unit05.dll
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\Unit05.pdb
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\Raylib-cs.dll
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\runtimes\linux-x64\native\libraylib.so
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\runtimes\osx-x64\native\libraylib.dylib
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\runtimes\win-x64\native\raylib.dll
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\bin\Debug\net6.0\runtimes\win-x86\native\raylib.dll
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\obj\Debug\net6.0\Unit05.csproj.CopyComplete
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\obj\Debug\net6.0\Unit05.genruntimeconfig.cache
+C:\Users\Colin Charles\OneDrive - BYU-Idaho\BYUI 2022\Fall 2022\CSE 210 - PROGRAMMING WITH CLASSES\unit 05 - Cycle\cycle\obj\Debug\net6.0\ref\Unit05.dll

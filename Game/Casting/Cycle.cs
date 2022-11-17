@@ -5,15 +5,16 @@ using System.Linq;
 namespace Unit05.Game.Casting
 {
     /// <summary>
-    /// <para>A long limbless reptile.</para>
-    /// <para>The responsibility of Snake is to move itself.</para>
+    /// <para>A long Bike.</para>
+    /// <para>The responsibility of Cycle is to move itself.</para>
     /// </summary>
     public class Cycle : Actor
     {
         private List<Actor> _segments = new List<Actor>();
+        private int _counter = 0;
 
         /// <summary>
-        /// Constructs a new instance of a Snake.
+        /// Constructs a new instance of a Cycle.
         /// </summary>
         public Cycle()
         {
@@ -21,7 +22,7 @@ namespace Unit05.Game.Casting
         }
 
         /// <summary>
-        /// Gets the snake's body segments.
+        /// Gets the cycle's body segments.
         /// </summary>
         /// <returns>The body segments in a List.</returns>
         public List<Actor> GetBody()
@@ -30,7 +31,7 @@ namespace Unit05.Game.Casting
         }
 
         /// <summary>
-        /// Gets the snake's head segment.
+        /// Gets the cycle's head segment.
         /// </summary>
         /// <returns>The head segment as an instance of Actor.</returns>
         public Actor GetHead()
@@ -39,16 +40,16 @@ namespace Unit05.Game.Casting
         }
 
         /// <summary>
-        /// Gets the snake's segments (including the head).
+        /// Gets the cycle's segments (including the head).
         /// </summary>
-        /// <returns>A list of snake segments as instances of Actors.</returns>
+        /// <returns>A list of cycle segments as instances of Actors.</returns>
         public List<Actor> GetSegments()
         {
             return _segments;
         }
 
         /// <summary>
-        /// Grows the snake's tail by the given number of segments.
+        /// Grows the cycle's tail by the given number of segments.
         /// </summary>
         /// <param name="numberOfSegments">The number of segments to grow.</param>
         public void GrowTail(int numberOfSegments)
@@ -83,11 +84,15 @@ namespace Unit05.Game.Casting
                 Actor previous = _segments[i - 1];
                 Point velocity = previous.GetVelocity();
                 trailing.SetVelocity(velocity);
+                _counter ++;
+                if (_counter % 5 == 0) {
+                    GrowTail(1);
+                }
             }
         }
 
         /// <summary>
-        /// Turns the head of the snake in the given direction.
+        /// Turns the head of the cycle in the given direction.
         /// </summary>
         /// <param name="velocity">The given direction.</param>
         public void TurnHead(Point direction)
@@ -96,7 +101,7 @@ namespace Unit05.Game.Casting
         }
 
         /// <summary>
-        /// Prepares the snake body for moving.
+        /// Prepares the cycle body for moving.
         /// </summary>
         private void PrepareBody()
         {
