@@ -42,26 +42,19 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleFoodCollisions(Cast cast)
         {
-            Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle");
-            Cycle cycle2 = (Cycle)cast.GetActors("cycle")[1];
-            Score score1 = (Score)cast.GetFirstActor("score");
-            Score score2 = (Score)cast.GetActors("score")[1];
+            List<Actor> cycles = cast.GetActors("cycle");
+            List<Actor> scores = cast.GetActors("score");
             Food food = (Food)cast.GetFirstActor("food");
-            
-            if (cycle1.GetHead().GetPosition().Equals(food.GetPosition()))
+
+            for (int i = 0; i < cycles.Count; i++)
             {
-                int points = food.GetPoints();
-                cycle1.GrowTail(points);
-                score1.AddPoints(points);
-                food.Reset();
-            }
-            
-            if (cycle2.GetHead().GetPosition().Equals(food.GetPosition()))
-            {
-                int points = food.GetPoints();
-                cycle2.GrowTail(points);
-                score2.AddPoints(points);
-                food.Reset();
+                if (((Cycle)cycles[i]).GetHead().GetPosition().Equals(food.GetPosition()))
+                {
+                    int points = food.GetPoints();
+                    ((Cycle)cycles[i]).GrowTail(points);
+                    ((Score)scores[i]).AddPoints(points);
+                    food.Reset();
+                }
             }
         }
 
@@ -71,26 +64,22 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleSegmentCollisions(Cast cast)
         {
-            Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle");
-            Actor seat1 = cycle1.GetHead();
-            List<Actor> body1 = cycle1.GetBody();
-            Cycle cycle2 = (Cycle)cast.GetActors("cycle")[1];
-            Actor seat2 = cycle2.GetHead();
-            List<Actor> body2 = cycle2.GetBody();
+            List<Actor> cycles = cast.GetActors("cycle");
+            List<Actor> segments = new List<Actor>();
 
-            foreach (Actor segment in body1)
+            foreach (Cycle cycle in cycles)
             {
-                if (segment.GetPosition().Equals(seat1.GetPosition()) || segment.GetPosition().Equals(seat2.GetPosition()))
-                {
-                    _isGameOver = true;
-                }
+                segments.AddRange(cycle.GetBody());
             }
 
-            foreach (Actor segment in body2)
+            for (int i = 0; i < segments.Count; i++)
             {
-                if (segment.GetPosition().Equals(seat1.GetPosition()) || segment.GetPosition().Equals(seat2.GetPosition()))
+                foreach (Cycle cycle in cycles)
                 {
-                    _isGameOver = true;
+                    if (segments[i].GetPosition().Equals(cycle.GetHead().GetPosition()))
+                    {
+                        _isGameOver = true;
+                    }
                 }
             }
         }
@@ -99,10 +88,14 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == true)
             {
-                Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle");
-                Cycle cycle2 = (Cycle)cast.GetActors("cycle")[1];
-                List<Actor> segments1 = cycle1.GetSegments();
-                List<Actor> segments2 = cycle1.GetSegments();
+                List<Actor> cycles = cast.GetActors("cycle");
+                List<Actor> segments = new List<Actor>();
+
+                foreach (Cycle cycle in cycles)
+                {
+                    segments.AddRange(cycle.GetSegments());
+                }
+                
                 Food food = (Food)cast.GetFirstActor("food");
 
                 // create a "game over" message
@@ -116,14 +109,11 @@ namespace Unit05.Game.Scripting
                 cast.AddActor("messages", message);
 
                 // make everything white
-                foreach (Actor segment in segments1)
+                foreach (Actor segment in segments)
                 {
                     segment.SetColor(Constants.WHITE);
                 }
-                foreach (Actor segment in segments2)
-                {
-                    segment.SetColor(Constants.WHITE);
-                }
+                
                 food.SetColor(Constants.WHITE);
             }
         }
