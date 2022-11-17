@@ -68,10 +68,6 @@ namespace Unit05.Game.Casting
                 segment.SetColor(Constants.GREEN);
                 _segments.Add(segment);
             }
-            if (_counter % 5 == 0) {
-            GrowTail(1);
-            }
-            _counter ++;
         }
 
         /// <inheritdoc/>
