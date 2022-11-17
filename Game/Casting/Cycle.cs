@@ -11,6 +11,7 @@ namespace Unit05.Game.Casting
     public class Snake : Actor
     {
         private List<Actor> _segments = new List<Actor>();
+        private int _counter = 0;
 
         /// <summary>
         /// Constructs a new instance of a Snake.
@@ -83,6 +84,10 @@ namespace Unit05.Game.Casting
                 Actor previous = _segments[i - 1];
                 Point velocity = previous.GetVelocity();
                 trailing.SetVelocity(velocity);
+                _counter ++;
+                if (_counter % 5 == 0) {
+                    GrowTail(1);
+                }
             }
         }
 
