@@ -85,7 +85,7 @@ namespace Unit05.Game.Casting
                 Point velocity = previous.GetVelocity();
                 trailing.SetVelocity(velocity);
                 _counter ++;
-                if (_counter % 5 == 0) {
+                if (_counter % 60 == 0) {
                     GrowTail(1);
                 }
             }
