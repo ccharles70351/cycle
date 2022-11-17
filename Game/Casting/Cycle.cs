@@ -69,9 +69,9 @@ namespace Unit05.Game.Casting
                 _segments.Add(segment);
             }
             if (_counter % 5 == 0) {
-            _counter ++;
             GrowTail(1);
             }
+            _counter ++;
         }
 
         /// <inheritdoc/>
