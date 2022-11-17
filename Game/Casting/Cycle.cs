@@ -8,14 +8,14 @@ namespace Unit05.Game.Casting
     /// <para>A long limbless reptile.</para>
     /// <para>The responsibility of Snake is to move itself.</para>
     /// </summary>
-    public class Snake : Actor
+    public class Cycle : Actor
     {
         private List<Actor> _segments = new List<Actor>();
 
         /// <summary>
         /// Constructs a new instance of a Snake.
         /// </summary>
-        public Snake()
+        public Cycle()
         {
             PrepareBody();
         }
@@ -103,7 +103,7 @@ namespace Unit05.Game.Casting
             int x = Constants.MAX_X / 2;
             int y = Constants.MAX_Y / 2;
 
-            for (int i = 0; i < Constants.SNAKE_LENGTH; i++)
+            for (int i = 0; i < Constants.CYCLE_LENGTH; i++)
             {
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
