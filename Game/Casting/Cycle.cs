@@ -68,6 +68,10 @@ namespace Unit05.Game.Casting
                 segment.SetColor(Constants.GREEN);
                 _segments.Add(segment);
             }
+            if (_counter % 5 == 0) {
+            _counter ++;
+            GrowTail(1);
+            }
         }
 
         /// <inheritdoc/>
@@ -84,10 +88,6 @@ namespace Unit05.Game.Casting
                 Actor previous = _segments[i - 1];
                 Point velocity = previous.GetVelocity();
                 trailing.SetVelocity(velocity);
-                _counter ++;
-                if (_counter % 60 == 0) {
-                    GrowTail(1);
-                }
             }
         }
 
