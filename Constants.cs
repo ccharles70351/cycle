@@ -26,7 +26,6 @@ namespace Unit05.Game
         public static List<List<string>> CONTROL = new List<List<string>>{
             new List<string>{"a", "d", "w", "s"},
             new List<string>{"j", "l", "i", "k"}
-            
         };
         public static Color RED = new Color(255, 0, 0);
         public static Color WHITE = new Color(255, 255, 255);

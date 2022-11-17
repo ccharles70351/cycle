@@ -13,7 +13,7 @@ namespace Unit05.Game.Scripting
     public class ControlActorsAction : Action
     {
         private KeyboardService _keyboardService;
-        private Point _direction = new Point(Constants.CELL_SIZE, 0);
+        private List<Point> _directions = new List<Point>{new Point (Constants.CELL_SIZE, 0), new Point (-Constants.CELL_SIZE, 0)};
 
         /// <summary>
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
@@ -33,29 +33,29 @@ namespace Unit05.Game.Scripting
                 // left
                 if (_keyboardService.IsKeyDown(controls[0]))
                 {
-                    _direction = new Point(-Constants.CELL_SIZE, 0);
+                    _directions[i] = new Point(-Constants.CELL_SIZE, 0);
                 }
 
                 // right
                 if (_keyboardService.IsKeyDown(controls[1]))
                 {
-                    _direction = new Point(Constants.CELL_SIZE, 0);
+                    _directions[i] = new Point(Constants.CELL_SIZE, 0);
                 }
 
                 // up
                 if (_keyboardService.IsKeyDown(controls[2]))
                 {
-                    _direction = new Point(0, -Constants.CELL_SIZE);
+                    _directions[i] = new Point(0, -Constants.CELL_SIZE);
                 }
 
                 // down
                 if (_keyboardService.IsKeyDown(controls[3]))
                 {
-                    _direction = new Point(0, Constants.CELL_SIZE);
+                    _directions[i] = new Point(0, Constants.CELL_SIZE);
                 }
 
                 Cycle cycle = (Cycle)cast.GetActors("cycle")[i];
-                cycle.TurnHead(_direction);
+                cycle.TurnHead(_directions[i]);
 
             }
         }
