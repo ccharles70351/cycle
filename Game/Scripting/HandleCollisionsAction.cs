@@ -42,10 +42,10 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleFoodCollisions(Cast cast)
         {
-            Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle1");
-            Cycle cycle2 = (Cycle)cast.GetFirstActor("cycle2");
-            Score score1 = (Score)cast.GetFirstActor("score1");
-            Score score2 = (Score)cast.GetFirstActor("score2");
+            Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle");
+            Cycle cycle2 = (Cycle)cast.GetActors("cycle")[1];
+            Score score1 = (Score)cast.GetFirstActor("score");
+            Score score2 = (Score)cast.GetActors("score")[1];
             Food food = (Food)cast.GetFirstActor("food");
             
             if (cycle1.GetHead().GetPosition().Equals(food.GetPosition()))
@@ -71,10 +71,10 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         private void HandleSegmentCollisions(Cast cast)
         {
-            Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle1");
+            Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle");
             Actor seat1 = cycle1.GetHead();
             List<Actor> body1 = cycle1.GetBody();
-            Cycle cycle2 = (Cycle)cast.GetFirstActor("cycle2");
+            Cycle cycle2 = (Cycle)cast.GetActors("cycle")[1];
             Actor seat2 = cycle2.GetHead();
             List<Actor> body2 = cycle2.GetBody();
 
@@ -99,8 +99,8 @@ namespace Unit05.Game.Scripting
         {
             if (_isGameOver == true)
             {
-                Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle1");
-                Cycle cycle2 = (Cycle)cast.GetFirstActor("cycle2");
+                Cycle cycle1 = (Cycle)cast.GetFirstActor("cycle");
+                Cycle cycle2 = (Cycle)cast.GetActors("cycle")[1];
                 List<Actor> segments1 = cycle1.GetSegments();
                 List<Actor> segments2 = cycle1.GetSegments();
                 Food food = (Food)cast.GetFirstActor("food");
