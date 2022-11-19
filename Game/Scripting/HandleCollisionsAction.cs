@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using Unit05.Game.Casting;
 using Unit05.Game.Services;
+using Unit05.Game.Scripting;
 
 
 namespace Unit05.Game.Scripting
@@ -16,13 +17,22 @@ namespace Unit05.Game.Scripting
     /// </summary>
     public class HandleCollisionsAction : Action
     {
-        private bool _isGameOver = false;
+        private bool _isGameOver;
+        private int _gameOverTimer;
 
         /// <summary>
         /// Constructs a new instance of HandleCollisionsAction.
         /// </summary>
         public HandleCollisionsAction()
         {
+            Reset();
+        }
+
+        // <inheritdoc/>
+        public void Reset()
+        {
+            _isGameOver = false;
+            _gameOverTimer = 0;
         }
 
         /// <inheritdoc/>
@@ -32,6 +42,45 @@ namespace Unit05.Game.Scripting
             {
                 HandleSegmentCollisions(cast);
                 HandleGameOver(cast);
+            }
+            else
+            {
+                if(_gameOverTimer == 0)
+                {
+                    // Remove all actors we don't need for the restart
+                    List<Actor> cycles = cast.GetActors("cycle");
+                    List<Actor> messages = cast.GetActors("messages");
+                    foreach (Actor cycle in cycles)
+                    {
+                        cast.RemoveActor("cycle", cycle);
+                    }
+                    foreach (Actor message in messages)
+                    {
+                        cast.RemoveActor("messages", message);
+                    }
+
+                    // Reset directions and add cycle again
+                    List<Action> inputActions = script.GetActions("input");
+                    foreach (Action action in inputActions)
+                    {
+                        action.Reset();
+                    }
+                    cast.AddActor("cycle", new Cycle(1));
+                    cast.AddActor("cycle", new Cycle(2));
+
+                    // Reset collision handling script
+                    Reset();
+                }
+                else
+                {
+                    _gameOverTimer--;
+
+                    List<Actor> messages = cast.GetActors("messages");
+                    foreach (Actor message in messages)
+                        {
+                            message.SetText($"Game Over!\nWe Will Restart in {(_gameOverTimer / Constants.FRAME_RATE) + 1}...");
+                        }
+                }
             }
         }
 
@@ -84,7 +133,7 @@ namespace Unit05.Game.Scripting
                 Point position = new Point(x, y);
 
                 Actor message = new Actor();
-                message.SetText("Game Over!");
+                message.SetText("Game Over!\nWe Will Restart in 3...");
                 message.SetPosition(position);
                 cast.AddActor("messages", message);
 
@@ -93,6 +142,9 @@ namespace Unit05.Game.Scripting
                 {
                     segment.SetColor(Constants.WHITE);
                 }
+
+                // set the gameover timer to 3 seconds
+                _gameOverTimer = 3 * Constants.FRAME_RATE;
             }
         }
 

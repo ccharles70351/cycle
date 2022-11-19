@@ -24,10 +24,8 @@ namespace Unit05
             // we no longer need the food
             // cast.AddActor("food", new Food());
 
-            Cycle cycle1 = new Cycle(1);
-            Cycle cycle2 = new Cycle(2);
-            cast.AddActor("cycle", cycle1);
-            cast.AddActor("cycle", cycle2);
+            cast.AddActor("cycle", new Cycle(1));
+            cast.AddActor("cycle", new Cycle(2));
 
             Score score1 = new Score();
             Score score2 = new Score();

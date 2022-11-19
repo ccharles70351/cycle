@@ -28,6 +28,12 @@ namespace Unit05.Game.Scripting
 
         }
 
+        /// <inheritdoc/>
+        public void Reset()
+        {
+            
+        }
+
         // 3) Override the Execute(Cast cast, Script script) method. Use the following 
         //    method comment. You custom implementation should do the following:
         //    a) get all the actors from the cast

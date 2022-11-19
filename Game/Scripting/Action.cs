@@ -19,5 +19,11 @@ namespace Unit05.Game.Scripting
         /// <param name="cast">The cast of actors.</param>
         /// <param name="script">The script of actions.</param>
         void Execute(Cast cast, Script script);
+
+        /// <summary>
+        /// Reset the base action. This method should be overriden by 
+        /// derived classes.
+        /// </summary>
+        void Reset();
     }
 }

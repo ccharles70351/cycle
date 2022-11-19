@@ -13,7 +13,7 @@ namespace Unit05.Game.Scripting
     public class ControlActorsAction : Action
     {
         private KeyboardService _keyboardService;
-        private List<Point> _directions = new List<Point>{new Point (0, -Constants.CELL_SIZE), new Point (0, -Constants.CELL_SIZE)};
+        private List<Point> _directions;
 
         /// <summary>
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
@@ -21,6 +21,13 @@ namespace Unit05.Game.Scripting
         public ControlActorsAction(KeyboardService keyboardService)
         {
             this._keyboardService = keyboardService;
+            Reset();
+        }
+
+        /// <inheritdoc/>
+        public void Reset()
+        {
+            _directions = new List<Point>{new Point (0, -Constants.CELL_SIZE), new Point (0, -Constants.CELL_SIZE)};
         }
 
         /// <inheritdoc/>

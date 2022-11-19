@@ -22,6 +22,12 @@ namespace Unit05.Game.Scripting
         }
 
         /// <inheritdoc/>
+        public void Reset()
+        {
+            
+        }
+
+        /// <inheritdoc/>
         public void Execute(Cast cast, Script script)
         {
             List<Actor> cycles = cast.GetActors("cycle");
