@@ -42,6 +42,7 @@ namespace Unit05.Game.Scripting
         private void HandleSegmentCollisions(Cast cast)
         {
             List<Actor> cycles = cast.GetActors("cycle");
+            List<Actor> scores = cast.GetActors("score");
             List<Actor> segments = new List<Actor>();
 
             foreach (Cycle cycle in cycles)
@@ -49,13 +50,17 @@ namespace Unit05.Game.Scripting
                 segments.AddRange(cycle.GetBody());
             }
 
-            for (int i = 0; i < segments.Count; i++)
+            foreach (Actor segment in segments)
             {
-                foreach (Cycle cycle in cycles)
+                for (int i = 0; i < cycles.Count; i++)
                 {
-                    if (segments[i].GetPosition().Equals(cycle.GetHead().GetPosition()))
+                    if (segment.GetPosition().Equals(((Cycle)cycles[i]).GetHead().GetPosition()))
                     {
                         _isGameOver = true;
+                        for (int j = 0; j < cycles.Count; j++)
+                        {
+                        ((Score)scores[j]).AddPoints((i == j) ? 0: 1);
+                        }
                     }
                 }
             }
