@@ -1,4 +1,5 @@
-﻿using Unit05.Game.Casting;
+﻿using Unit05.Game;
+using Unit05.Game.Casting;
 using Unit05.Game.Directing;
 using Unit05.Game.Scripting;
 using Unit05.Game.Services;
@@ -19,11 +20,21 @@ namespace Unit05
         {
             // create the cast
             Cast cast = new Cast();
-            cast.AddActor("food", new Food());
-            cast.AddActor("cycle", new Cycle());
-            cast.AddActor("cycle", new Cycle());
-            cast.AddActor("score", new Score());
-            cast.AddActor("score", new Score());
+            
+            // we no longer need the food
+            // cast.AddActor("food", new Food());
+
+            Cycle cycle1 = new Cycle(1);
+            Cycle cycle2 = new Cycle(2);
+            cast.AddActor("cycle", cycle1);
+            cast.AddActor("cycle", cycle2);
+
+            Score score1 = new Score();
+            Score score2 = new Score();
+            score1.SetPosition(new Point(20, 0));
+            score2.SetPosition(new Point(Constants.MAX_X - 80, 0));
+            cast.AddActor("score", score1);
+            cast.AddActor("score", score2);
 
             // create the services
             KeyboardService keyboardService = new KeyboardService();

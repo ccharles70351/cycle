@@ -13,7 +13,7 @@ namespace Unit05.Game.Scripting
     public class ControlActorsAction : Action
     {
         private KeyboardService _keyboardService;
-        private List<Point> _directions = new List<Point>{new Point (Constants.CELL_SIZE, 0), new Point (-Constants.CELL_SIZE, 0)};
+        private List<Point> _directions = new List<Point>{new Point (0, -Constants.CELL_SIZE), new Point (0, -Constants.CELL_SIZE)};
 
         /// <summary>
         /// Constructs a new instance of ControlActorsAction using the given KeyboardService.
@@ -31,25 +31,25 @@ namespace Unit05.Game.Scripting
                 List<string> controls = Constants.CONTROL[i];
 
                 // left
-                if (_keyboardService.IsKeyDown(controls[0]))
+                if (_keyboardService.IsKeyDown(controls[0]) && (_directions[i].GetX() != Constants.CELL_SIZE))
                 {
                     _directions[i] = new Point(-Constants.CELL_SIZE, 0);
                 }
 
                 // right
-                if (_keyboardService.IsKeyDown(controls[1]))
+                if (_keyboardService.IsKeyDown(controls[1]) && (_directions[i].GetX() != -Constants.CELL_SIZE))
                 {
                     _directions[i] = new Point(Constants.CELL_SIZE, 0);
                 }
 
                 // up
-                if (_keyboardService.IsKeyDown(controls[2]))
+                if (_keyboardService.IsKeyDown(controls[2]) && (_directions[i].GetY() != Constants.CELL_SIZE))
                 {
                     _directions[i] = new Point(0, -Constants.CELL_SIZE);
                 }
 
                 // down
-                if (_keyboardService.IsKeyDown(controls[3]))
+                if (_keyboardService.IsKeyDown(controls[3]) && (_directions[i].GetY() != -Constants.CELL_SIZE))
                 {
                     _directions[i] = new Point(0, Constants.CELL_SIZE);
                 }

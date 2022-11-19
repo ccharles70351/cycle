@@ -16,9 +16,9 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Constructs a new instance of a Cycle.
         /// </summary>
-        public Cycle()
+        public Cycle(int cycleNum)
         {
-            PrepareBody();
+            PrepareBody(cycleNum);
         }
 
         /// <summary>
@@ -60,12 +60,13 @@ namespace Unit05.Game.Casting
                 Point velocity = tail.GetVelocity();
                 Point offset = velocity.Reverse();
                 Point position = tail.GetPosition().Add(offset);
+                Color tailColor = tail.GetColor();
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
                 segment.SetText("#");
-                segment.SetColor(Constants.GREEN);
+                segment.SetColor(tailColor);
                 _segments.Add(segment);
             }
         }
@@ -104,9 +105,9 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Prepares the cycle body for moving.
         /// </summary>
-        private void PrepareBody()
+        private void PrepareBody(int cycleNum)
         {
-            int x = Constants.MAX_X / 2;
+            int x = (Constants.MAX_X / 4) * (1 + (cycleNum - 1) * 2);
             int y = Constants.MAX_Y / 2;
 
             for (int i = 0; i < Constants.CYCLE_LENGTH; i++)
@@ -114,7 +115,9 @@ namespace Unit05.Game.Casting
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
                 string text = i == 0 ? "8" : "#";
-                Color color = i == 0 ? Constants.YELLOW : Constants.GREEN;
+                Color color = (cycleNum == 1) ? 
+                    (i == 0) ? Constants.YELLOW : Constants.GREEN: 
+                    (i == 0) ? Constants.PINK : Constants.PURPLE;
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
