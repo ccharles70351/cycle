@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 
 namespace Unit05.Game.Casting
@@ -15,6 +16,7 @@ namespace Unit05.Game.Casting
         private int _green = 0;
         private int _blue = 0;
         private int _alpha = 255;
+        private float _scaling = 1;
 
         /// <summary>
         /// Constructs a new instance of Color using the given red, green and blue values.
@@ -44,7 +46,7 @@ namespace Unit05.Game.Casting
         /// <returns>The blue value.</returns>
         public int GetBlue()
         {
-            return _blue;
+            return (int)Math.Round(_blue * _scaling);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Unit05.Game.Casting
         /// <returns>The green value.</returns>
         public int GetGreen()
         {
-            return _green;
+            return (int)Math.Round(_green * _scaling);
         }
 
         /// <summary>
@@ -62,7 +64,25 @@ namespace Unit05.Game.Casting
         /// <returns>The red value.</returns>
         public int GetRed()
         {
-            return _red;
+            return (int)Math.Round(_red * _scaling);
+        }
+
+        /// <summary>
+        /// Gets the color's scale value.
+        /// </summary>
+        /// <returns>The scale value.</returns>
+        public float GetScale()
+        {
+            return _scaling;
+        }
+
+        /// <summary>
+        /// Scales the color from black to the user defined value
+        /// </summary>
+        /// <param name="scale">The amount from 0-1 to scale the color by.</param>
+        public void ScaleColor(float scale)
+        {
+            _scaling = scale;
         }
 
     }

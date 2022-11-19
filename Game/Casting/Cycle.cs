@@ -12,13 +12,15 @@ namespace Unit05.Game.Casting
     {
         private List<Actor> _segments = new List<Actor>();
         private int _counter = 0;
+        private int _cycleNum = 0;
 
         /// <summary>
         /// Constructs a new instance of a Cycle.
         /// </summary>
         public Cycle(int cycleNum)
         {
-            PrepareBody(cycleNum);
+            _cycleNum = cycleNum;
+            PrepareBody();
         }
 
         /// <summary>
@@ -65,9 +67,15 @@ namespace Unit05.Game.Casting
                 Actor segment = new Actor();
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
-                segment.SetText("#");
                 segment.SetColor(tailColor);
+                segment.SetText("#");
                 _segments.Add(segment);
+
+                if (tailColor != Constants.WHITE)
+                {
+                    ColorBody();
+                }
+
             }
         }
 
@@ -105,9 +113,9 @@ namespace Unit05.Game.Casting
         /// <summary>
         /// Prepares the cycle body for moving.
         /// </summary>
-        private void PrepareBody(int cycleNum)
+        private void PrepareBody()
         {
-            int x = (Constants.MAX_X / 4) * (1 + (cycleNum - 1) * 2);
+            int x = (Constants.MAX_X / 4) * (1 + (_cycleNum - 1) * 2);
             int y = Constants.MAX_Y / 2;
 
             for (int i = 0; i < Constants.CYCLE_LENGTH; i++)
@@ -115,17 +123,40 @@ namespace Unit05.Game.Casting
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
                 string text = i == 0 ? "8" : "#";
-                Color color = (cycleNum == 1) ? 
-                    (i == 0) ? Constants.YELLOW : Constants.GREEN: 
-                    (i == 0) ? Constants.PINK : Constants.PURPLE;
 
                 Actor segment = new Actor();
                 segment.SetPosition(position);
                 segment.SetVelocity(velocity);
                 segment.SetText(text);
-                segment.SetColor(color);
                 _segments.Add(segment);
             }
+
+            ColorBody();
+        }
+
+        /// <summary>
+        /// Colors the cycle body.
+        /// </summary>
+        private void ColorBody()
+        {
+
+            for (int i = 0; i < _segments.Count; i++)
+            {
+                Color color = (_cycleNum == 1) ? 
+                    (i == 0) ? Constants.YELLOW : Constants.GREEN: 
+                    (i == 0) ? Constants.PINK : Constants.PURPLE;
+
+                int red = color.GetRed();
+                int green = color.GetGreen();
+                int blue = color.GetBlue();
+
+                color = new Color(red, green, blue);
+                float colorScale = (_segments.Count - i) / (float)_segments.Count;
+                
+                color.ScaleColor(colorScale);
+                _segments[i].SetColor(color);
+            }
+
         }
     }
 }
